@@ -12,3 +12,7 @@ Bert based FEVER project
 和使用 AllenNLP 预训练模型预测 label的方法（旧版本）
 ## run_bert.ipython
 使用 Bert 训练和预测结果
+## 数据集和相关模型
+http://fever.ai/  
+https://github.com/google-research/bert  
+https://allennlp.org/
