@@ -68,6 +68,8 @@ for i in range(1, 110):
                 indexer.add(id=tokens[0],
                             doc=replaceSentece(tokens[0]),
                             sent=tokens[1],
+                            # 因为句子可能使用代词指代关键内容如人名，标题往往就是被指代的对象
+                            # 将句子所属文章标题加入句子中
                             content='( '+ replaceSentece(tokens[0]) + ' ) ' +replaceSentece(doc_content)
                             )
 

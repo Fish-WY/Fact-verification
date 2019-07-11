@@ -10,8 +10,11 @@ import time
 data_dir = './input_data'
 
 def addSentenceToDataset(fileName):
-    # 原数据集只有 docID 和 sentID 没有句子内容
-    # 检索句子内容并将其加入 json 文件以备 bert 使用
+    '''
+    原数据集只有 docID 和 sentID 没有句子内容
+    检索句子内容并将其加入 json 文件以备 bert 使用
+    '''
+
     input_file_path = os.path.join(data_dir, fileName+'.json')
     with open(input_file_path, 'r') as f:
         input = json.loads(f.read())
@@ -34,7 +37,9 @@ def addSentenceToDataset(fileName):
         json.dump(input, f, indent=2)
 
 def createTestsetFrom(fileName):
-    # 同上 不过使用自己检索的语句
+    '''
+    同上 插入的为自己检索的相关语句
+    '''
     input_file_path = os.path.join(data_dir, fileName + '.json')
     with open(input_file_path, 'r') as f:
         input = json.loads(f.read())

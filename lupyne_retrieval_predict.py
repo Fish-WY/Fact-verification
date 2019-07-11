@@ -34,12 +34,10 @@ indexer_doc = engine.indexers.IndexSearcher(directory='stemmer_doc')
 indexer_sent = engine.indexers.IndexSearcher(directory='doc_sentence')
 
 
-
-# st = StanfordNERTagger('//Users/kris/Documents/UNI_PDF/Web Search and Text Analysis COMP90042_2019_SM1/project/resources/stanford-ner-2018-10-16/classifiers/english.all.3class.distsim.crf.ser.gz',
-#                        '/Users/kris/Documents/UNI_PDF/Web Search and Text Analysis COMP90042_2019_SM1/project/resources/stanford-ner-2018-10-16/stanford-ner.jar',
-#                        encoding='utf-8')
-
 def getSentbyID(doc_id, sent_id):
+    '''
+    根据 ID 返回对应的句子内容
+    '''
     try:
         sent_id = str(sent_id)
         # q = Query.term('doc', doc_id) & Query.term('sent', sent_id)
@@ -90,6 +88,13 @@ def docSearch(classified_text=[]):
     return hits
 
 def sentSearch(claim = ''):
+    '''
+    返回相关的句子排序
+    提取句子中的 NER 并给其更高的查询权重
+    查询时不仅考虑句子内容也将所属文章的标题同时考虑
+    '''
+
+
     # # POS tagging v2
     # POS_list = nltk.pos_tag(nltk.word_tokenize(claim))
     # q_list = []
@@ -159,6 +164,10 @@ def sentSearch(claim = ''):
     return hits
 
 def predictLabel(value,hits):
+    '''
+    基于 allenNLP 模型的预测函数
+    已被替代
+    '''
     print('_'*15,'predictLabel', '_'*15)
     claim = value['claim']
     value['evidence'] = []
@@ -264,8 +273,11 @@ def saveResults():
 
 
 if __name__ == '__main__':
+    '''
+    使用 AllenNLP 预测 label
+    已被替代
+    '''
 
-    # 老版本使用 AllenNLP 预测 label
 
     # with open('train.json', 'r+') as f:
     #     train = json.loads(f.read())
